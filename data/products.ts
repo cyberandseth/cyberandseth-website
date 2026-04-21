@@ -23,8 +23,8 @@ export const products: Product[] = [
       "One before/after. One fill-in template. One next step. Consumable in under 5 minutes.",
     ],
     ctaText: 'Get It Free',
-    href: 'https://join.cyberandseth.com',
-    coverImage: '',
+    href: 'https://join.cyberandseth.com/grc-resume-fix',
+    coverImage: '/images/ResumeRewrite.png',
   },
   {
     id: 'risk-strategist-workbook',

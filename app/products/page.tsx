@@ -175,8 +175,8 @@ export default function ProductsPage() {
                   "One before/after. One fill-in template. One next step. Under 5 minutes.",
                 ]}
                 ctaText="Get It Free"
-                href="https://join.cyberandseth.com"
-                coverImage=""
+                href="https://join.cyberandseth.com/grc-resume-fix"
+                coverImage="/images/ResumeRewrite.png"
               />
               <ProductCard
                 name="The 3-Lane Test"

@@ -30,7 +30,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://join.cyberandseth.com"
+            href="https://join.cyberandseth.com/grc-resume-fix"
             target="_blank"
             rel="noopener noreferrer"
             className="font-body font-bold text-sm tracking-widest uppercase bg-gold text-navy px-8 py-4 hover:bg-gold/90 transition-colors duration-200 w-full sm:w-auto text-center"
