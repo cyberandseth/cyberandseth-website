@@ -3,6 +3,7 @@ import { Bebas_Neue, Lato } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import TrackPopup from '@/components/TrackPopup'
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -49,6 +50,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <TrackPopup />
       </body>
     </html>
   )

@@ -9,7 +9,9 @@ const productLinks = [
 const siteLinks = [
   { href: '/',          label: 'Home' },
   { href: '/about',     label: 'About' },
-  { href: '/products',  label: 'Products' },
+  { href: '/track-a',   label: 'Track A — Move Up' },
+  { href: '/track-b',   label: 'Track B — Break In' },
+  { href: '/challenge', label: 'The 5-Day GRC Challenge' },
   { href: '/resources', label: 'Resources' },
   { href: '/contact',   label: 'Contact' },
 ]

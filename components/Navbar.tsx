@@ -1,18 +1,20 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 
-const navLinks = [
-  { href: '/',          label: 'Home' },
-  { href: '/about',     label: 'About' },
-  { href: '/products',  label: 'Products' },
-  { href: '/resources', label: 'Resources' },
+const trackLinks = [
+  { href: '/track-a',   label: 'Track A — Move Up' },
+  { href: '/track-b',   label: 'Track B — Break In' },
+  { href: '/challenge', label: 'The 5-Day GRC Challenge' },
 ]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [tracksOpen, setTracksOpen] = useState(false)
+  const [mobileTracksOpen, setMobileTracksOpen] = useState(false)
+  const tracksRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -25,6 +27,19 @@ export default function Navbar() {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
+
+  // Close tracks dropdown on outside click
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (tracksRef.current && !tracksRef.current.contains(e.target as Node)) {
+        setTracksOpen(false)
+      }
+    }
+    if (tracksOpen) {
+      document.addEventListener('mousedown', onClickOutside)
+      return () => document.removeEventListener('mousedown', onClickOutside)
+    }
+  }, [tracksOpen])
 
   return (
     <>
@@ -48,15 +63,70 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="font-body font-light text-sm text-dgray hover:text-white tracking-wide transition-colors duration-200"
+            <Link
+              href="/"
+              className="font-body font-light text-sm text-dgray hover:text-white tracking-wide transition-colors duration-200"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="font-body font-light text-sm text-dgray hover:text-white tracking-wide transition-colors duration-200"
+            >
+              About
+            </Link>
+
+            {/* Tracks dropdown */}
+            <div
+              ref={tracksRef}
+              className="relative"
+              onMouseEnter={() => setTracksOpen(true)}
+              onMouseLeave={() => setTracksOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setTracksOpen((o) => !o)}
+                className="flex items-center gap-1.5 font-body font-light text-sm text-dgray hover:text-white tracking-wide transition-colors duration-200"
+                aria-expanded={tracksOpen}
+                aria-haspopup="menu"
               >
-                {link.label}
-              </Link>
-            ))}
+                Tracks
+                <span
+                  className={`inline-block text-[10px] transition-transform duration-200 ${tracksOpen ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                >
+                  ▾
+                </span>
+              </button>
+
+              {tracksOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-0 top-full pt-3 w-72"
+                >
+                  <div className="bg-navy border border-gold/30 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+                    {trackLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setTracksOpen(false)}
+                        role="menuitem"
+                        className="block font-body font-light text-sm text-dgray tracking-wide px-5 py-3 border-l-2 border-transparent hover:border-gold hover:bg-white/5 hover:text-white transition-all duration-150"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/resources"
+              className="font-body font-light text-sm text-dgray hover:text-white tracking-wide transition-colors duration-200"
+            >
+              Resources
+            </Link>
           </nav>
 
           {/* Desktop CTA */}
@@ -104,17 +174,59 @@ export default function Navbar() {
           </div>
 
           {/* Links */}
-          <nav className="flex flex-col flex-1 justify-center px-8 gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-display text-5xl text-white tracking-wider py-3 border-b border-white/8 hover:text-gold transition-colors duration-200"
+          <nav className="flex flex-col flex-1 overflow-y-auto px-8 pt-6 pb-4 gap-1">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="font-display text-5xl text-white tracking-wider py-3 border-b border-white/8 hover:text-gold transition-colors duration-200"
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              onClick={() => setMenuOpen(false)}
+              className="font-display text-5xl text-white tracking-wider py-3 border-b border-white/8 hover:text-gold transition-colors duration-200"
+            >
+              About
+            </Link>
+
+            {/* Tracks collapsible */}
+            <button
+              type="button"
+              onClick={() => setMobileTracksOpen((o) => !o)}
+              className="flex items-center justify-between font-display text-5xl text-white tracking-wider py-3 border-b border-white/8 hover:text-gold transition-colors duration-200 text-left"
+              aria-expanded={mobileTracksOpen}
+            >
+              <span>Tracks</span>
+              <span
+                className={`text-2xl transition-transform duration-200 ${mobileTracksOpen ? 'rotate-180' : ''}`}
+                aria-hidden="true"
               >
-                {link.label}
-              </Link>
-            ))}
+                ▾
+              </span>
+            </button>
+            {mobileTracksOpen && (
+              <div className="flex flex-col border-b border-white/8">
+                {trackLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-body font-light text-lg text-dgray tracking-wide py-3 pl-6 border-l-2 border-gold/40 hover:text-white hover:border-gold transition-all duration-150"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <Link
+              href="/resources"
+              onClick={() => setMenuOpen(false)}
+              className="font-display text-5xl text-white tracking-wider py-3 border-b border-white/8 hover:text-gold transition-colors duration-200"
+            >
+              Resources
+            </Link>
           </nav>
 
           {/* Bottom CTA */}
