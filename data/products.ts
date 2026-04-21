@@ -23,7 +23,7 @@ export const products: Product[] = [
       "One before/after. One fill-in template. One next step. Consumable in under 5 minutes.",
     ],
     ctaText: 'Get It Free',
-    href: 'https://join.cyberandseth.com/grc-resume-fix',
+    href: 'https://cyber-seth.kit.com/newsletter',
     coverImage: '/images/ResumeRewrite.png',
   },
   {

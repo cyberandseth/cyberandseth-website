@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 const productLinks = [
-  { href: '/products/risk-strategist-workbook', label: 'Risk Strategist Workbook' },
-  { href: '/products/career-toolkit',           label: 'Career Toolkit' },
-  { href: '/products',                          label: 'Your Background Is the Edge' },
+  { href: '/products/risk-strategist-workbook',        label: 'Risk Strategist Workbook', external: false },
+  { href: '/products/career-toolkit',                  label: 'Career Toolkit',           external: false },
+  { href: 'https://cyberseth.gumroad.com/l/background-edge', label: 'Your Background Is the Edge', external: true },
 ]
 
 const siteLinks = [
@@ -65,15 +65,27 @@ export default function Footer() {
               Products
             </h4>
             <nav className="flex flex-col gap-3">
-              {productLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-body font-light text-sm text-dgray hover:text-white transition-colors duration-200 w-fit"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {productLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body font-light text-sm text-dgray hover:text-white transition-colors duration-200 w-fit"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-body font-light text-sm text-dgray hover:text-white transition-colors duration-200 w-fit"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
             </nav>
           </div>
 

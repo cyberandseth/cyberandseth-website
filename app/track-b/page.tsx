@@ -101,7 +101,7 @@ export default function TrackBPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <a
-              href="https://join.cyberandseth.com/grc-resume-fix"
+              href="https://cyber-seth.kit.com/newsletter"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body font-bold text-sm tracking-widest uppercase bg-ice text-navy px-8 py-4 hover:bg-ice/90 transition-colors duration-200"
@@ -292,7 +292,7 @@ export default function TrackBPage() {
               </p>
             </div>
             <a
-              href="https://join.cyberandseth.com/grc-resume-fix"
+              href="https://cyber-seth.kit.com/newsletter"
               target="_blank"
               rel="noopener noreferrer"
               className="font-body font-bold text-sm tracking-widest uppercase bg-gold text-navy px-6 py-3.5 hover:bg-gold/90 transition-colors duration-200 whitespace-nowrap shrink-0"

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import SectionLabel from '@/components/SectionLabel'
 import KitForm from '@/components/KitForm'
 import Link from 'next/link'
@@ -37,20 +38,35 @@ export default function AboutPage() {
 
       {/* Bio */}
       <section className="bg-navy py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="flex flex-col gap-8">
-            <p className="font-body font-light text-white/90 text-lg leading-relaxed">
-              Seth Ellis is a GRC professional with hands-on experience in information security governance, risk management, and compliance. Cyber & Seth exists because the path into GRC leadership is rarely explained clearly — and almost never explained honestly.
-            </p>
-            <p className="font-body font-light text-dgray text-base leading-relaxed">
-              The frameworks here are the ones that work in real conversations, real interviews, and real organizations. Not theory. Not textbook definitions. The actual mechanics of how capable people reposition themselves and get taken seriously.
-            </p>
-            <p className="font-body font-light text-dgray text-base leading-relaxed">
-              Both tracks — breaking in from another field and moving up from a technical role — are built from the same foundation: your existing experience is more relevant than you've been told. The job is to make that visible.
-            </p>
-            <p className="font-body font-light text-dgray text-base leading-relaxed">
-              This is not a training platform. It's a career strategy resource — built for people who are already capable and need the map, not the credential.
-            </p>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,280px)_1fr] gap-10 md:gap-14 items-start">
+            {/* Portrait */}
+            <div className="relative w-full aspect-square max-w-[280px] mx-auto md:mx-0 bg-[#111f2e] border border-gold/30 overflow-hidden">
+              <Image
+                src="/images/profilePic.jpeg"
+                alt="Seth Ellis"
+                fill
+                sizes="(min-width: 768px) 280px, 80vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Copy */}
+            <div className="flex flex-col gap-8">
+              <p className="font-body font-light text-white/90 text-lg leading-relaxed">
+                Seth Ellis is a GRC professional with hands-on experience in information security governance, risk management, and compliance. Cyber & Seth exists because the path into GRC leadership is rarely explained clearly — and almost never explained honestly.
+              </p>
+              <p className="font-body font-light text-dgray text-base leading-relaxed">
+                The frameworks here are the ones that work in real conversations, real interviews, and real organizations. Not theory. Not textbook definitions. The actual mechanics of how capable people reposition themselves and get taken seriously.
+              </p>
+              <p className="font-body font-light text-dgray text-base leading-relaxed">
+                Both tracks — breaking in from another field and moving up from a technical role — are built from the same foundation: your existing experience is more relevant than you&apos;ve been told. The job is to make that visible.
+              </p>
+              <p className="font-body font-light text-dgray text-base leading-relaxed">
+                This is not a training platform. It&apos;s a career strategy resource — built for people who are already capable and need the map, not the credential.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -76,7 +92,7 @@ export default function AboutPage() {
                 You've been doing the technical work — SOC analysis, vulnerability management, IT audit support, security engineering. You know the tools, you understand the environment. What you need now is the language and positioning to move into governance, risk, or compliance leadership. That transition is strategic, not technical.
               </p>
               <Link
-                href="/products"
+                href="/track-a"
                 className="font-body font-bold text-xs tracking-widest uppercase text-gold hover:text-gold/80 transition-colors w-fit mt-2"
               >
                 See Track A resources →
@@ -95,7 +111,7 @@ export default function AboutPage() {
                 Finance, healthcare, military, legal, project management — these backgrounds don't need to be explained away. They need to be translated. A risk analyst from financial services isn't switching careers into GRC; they're lateraling. The mechanics of that move are specific, teachable, and faster than most people expect.
               </p>
               <Link
-                href="/products"
+                href="/track-b"
                 className="font-body font-bold text-xs tracking-widest uppercase text-ice hover:text-ice/80 transition-colors w-fit mt-2"
               >
                 See Track B resources →

@@ -355,7 +355,7 @@ export default function ChallengePage() {
             Reserve Your Seat — $497
           </a>
           <a
-            href="https://join.cyberandseth.com/grc-resume-fix"
+            href="https://cyber-seth.kit.com/newsletter"
             target="_blank"
             rel="noopener noreferrer"
             className="font-body font-light text-sm text-dgray hover:text-gold transition-colors duration-200 tracking-wide"

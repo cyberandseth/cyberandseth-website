@@ -151,12 +151,18 @@ export default function ResourcesPage() {
               </p>
             </div>
           </div>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap gap-6">
             <Link
-              href="/products"
+              href="/track-a"
               className="font-body font-bold text-xs tracking-widest uppercase text-gold hover:text-gold/80 transition-colors duration-200"
             >
-              View all products →
+              Explore Track A →
+            </Link>
+            <Link
+              href="/track-b"
+              className="font-body font-bold text-xs tracking-widest uppercase text-ice hover:text-ice/80 transition-colors duration-200"
+            >
+              Explore Track B →
             </Link>
           </div>
         </div>

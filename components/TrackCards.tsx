@@ -18,7 +18,7 @@ export default function TrackCards() {
           Already in IT or security. Ready to stop executing and start leading. The path from technical contributor to GRC leadership is shorter than most people think — and more strategic than most people plan.
         </p>
         <Link
-          href="/products"
+          href="/track-a"
           className="font-body font-bold text-xs tracking-widest uppercase text-gold border border-gold/40 px-6 py-3 w-fit hover:bg-gold hover:text-navy transition-all duration-200 mt-2"
         >
           See the Path
@@ -40,7 +40,7 @@ export default function TrackCards() {
           Coming from finance, healthcare, military, legal, or project management. Your background is not a liability — it's a positioning advantage most career changers don't know how to use.
         </p>
         <Link
-          href="/products"
+          href="/track-b"
           className="font-body font-bold text-xs tracking-widest uppercase text-white border border-white/40 px-6 py-3 w-fit hover:bg-white hover:text-teal transition-all duration-200 mt-2"
         >
           See the Path
